@@ -1,0 +1,22 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ],
+    [
+      "babel-plugin-module-resolver",
+      {
+        "alias": {
+          "components": "./components",
+          "hooks": "./hooks",
+          "constants": "./constants.js"
+        }
+      }
+    ]
+  ]
+}
