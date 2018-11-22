@@ -13,7 +13,7 @@
       {
         "alias": {
           "components": "./components",
-          "hooks": "./hooks",
+          "state": "./state",
           "constants": "./constants.js"
         }
       }
