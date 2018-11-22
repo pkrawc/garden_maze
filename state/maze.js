@@ -9,20 +9,22 @@ const LEFT = "maze/LEFT"
 const RIGHT = "maze/RIGHT"
 const UP = "maze/UP"
 const DOWN = "maze/DOWN"
+const KEY_PRESS = "maze/KEY_PRESS"
 
 // REDUCER
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case LOADED:
       return { ...state, loaded: true, maze: payload }
-    case LEFT:
-      return { ...state, x: max(0, --state.x) }
-    case RIGHT:
-      return { ...state, x: min(state.maze.length, ++state.x) }
-    case UP:
-      return { ...state, y: max(0, --state.y) }
-    case DOWN:
-      return { ...state, y: min(state.maze.length, ++state.y) }
+    case KEY_PRESS: {
+      const cell = state.maze[state.y][state.x]
+      if (payload === "ArrowLeft" && !cell.left) return { ...state, x: max(0, --state.x) }
+      if (payload === "ArrowUp" && !cell.top) return { ...state, y: max(0, --state.y) }
+      if (payload === "ArrowRight" && !cell.right)
+        return { ...state, x: min(state.maze.length, ++state.x) }
+      if (payload === "ArrowDown" && !cell.bottom)
+        return { ...state, y: min(state.maze.length, ++state.y) }
+    }
     default:
       return state
   }
@@ -35,22 +37,13 @@ const useMaze = () => {
     x: 0,
     y: 0
   })
-  const maze = generate(40)
-  const handleKeyPress = ({ key }) => {
-    const cell = state.maze[state.y][state.x]
-    if (key === "ArrowLeft" && !cell.left) dispatch({ type: LEFT })
-    if (key === "ArrowUp" && !cell.top) dispatch({ type: UP })
-    if (key === "ArrowRight" && !cell.right) dispatch({ type: RIGHT })
-    if (key === "ArrowDown" && !cell.bottom) dispatch({ type: DOWN })
-  }
-  useEffect(() => dispatch({ type: LOADED, payload: maze }), [])
-  useEffect(
-    () => {
-      document.addEventListener("keydown", handleKeyPress)
-      return () => document.removeEventListener("keydown", handleKeyPress)
-    },
-    [state.x, state.y]
-  )
+  useEffect(() => {
+    const maze = generate(40)
+    const handleKeyPress = ({ key }) => dispatch({ type: KEY_PRESS, payload: key })
+    dispatch({ type: LOADED, payload: maze })
+    document.addEventListener("keydown", handleKeyPress)
+    return () => document.removeEventListener("keydown", handleKeyPress)
+  }, [])
   return state
 }
 
