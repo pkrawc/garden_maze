@@ -9,6 +9,14 @@ const { min, max } = Math
 
 const App = props => {
   const { x, y, x2, y2, maze, loaded } = useMaze()
+  if (x===39 && y===39){
+    alert("Player yellow has won!!!");
+    window.location.reload();
+  }
+  else if (x2===39 && y2===39){
+    alert("Player blue has won!!!");
+    window.location.reload();
+  }
   return (
     <main className="app">
       <GlobalStyles />

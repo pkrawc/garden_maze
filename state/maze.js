@@ -49,7 +49,6 @@ const useMaze = () => {
   })
   useEffect(() => {
     const maze = generate(40)
-    console.log(maze)
     const handleKeyPress = ({ key }) => dispatch({ type: KEY_PRESS, payload: key })
     dispatch({ type: LOADED, payload: maze })
     document.addEventListener("keydown", handleKeyPress)
