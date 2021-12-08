@@ -22,7 +22,7 @@ const Field = styled.section`
     font-size: 1rem;
     font-weight: 700;
     padding: 0 0.5rem;
-    color: ${colors.green_700};
+    color: white;
     background: ${colors.green_300};
     border-radius: 2px;
   }
