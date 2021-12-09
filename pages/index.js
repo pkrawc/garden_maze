@@ -28,14 +28,16 @@ const App = props => {
 
   }, [])
 
-  const { x, y, maze, loaded } = useMaze(123456)
+  const [w, h] = [40, 40];
+  const seed = 123456;
+  const { x, y, maze, loaded } = useMaze(w, h, seed)
   return (
     <main className="app">
       <GlobalStyles />
       <h1 className="title">A-maze'in Routable</h1>
       {loaded && (
-        <Field width={30} height={30}>
-          <Hedges maze={maze} width={30} height={30} />
+        <Field width={w} height={h}>
+          <Hedges maze={maze} width={w} height={h} />
           <Character x={x} y={y} />
         </Field>
       )}
