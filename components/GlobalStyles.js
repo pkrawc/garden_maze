@@ -45,6 +45,34 @@ body {
     bottom: 0;
     font-weight: 900;
   }
+  .legend {
+    display: block;
+  }
+  .identify {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    .content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      text-align: center;
+      h2 {
+        margin-bottom: 40px;
+        margin-top: 20px;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
 `
 
