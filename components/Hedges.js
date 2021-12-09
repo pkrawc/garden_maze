@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const { min } = Math
 
-const showBorder = dir => (dir ? "2px solid #0d5243" : "2px solid #1b7a66")
+const showBorder = dir => (dir ? "2px solid #0d37bf" : "2px solid #587cf3")
 
 const Hedges = ({ maze, className }) => (
   <section className={className}>

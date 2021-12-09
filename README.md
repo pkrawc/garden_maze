@@ -1,5 +1,7 @@
-# Garden Maze
+# A-maze'in Routable
 
-A quick little game. Using [Ellers alogrithm](http://www.neocomputer.org/projects/eller.html) for generating the maze.
+The Gabdnurovichs 2021 Q4 Hackathon!
 
-![screen shot](./garden_maze_desktop.png)
+Enjoy this fun and challenging maze with your co-workers.
+You may learn a little about your co-workers in order to reach
+the end too. :)

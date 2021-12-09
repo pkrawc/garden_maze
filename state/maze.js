@@ -31,14 +31,14 @@ const reducer = (state, { type, payload }) => {
 }
 
 // STATE HOOK
-const useMaze = () => {
+const useMaze = (seed) => {
   const [state, dispatch] = useReducer(reducer, {
     maze: [],
     x: 0,
     y: 0
   })
   useEffect(() => {
-    const maze = generate(40)
+    const maze = generate(30, 30, true, seed)
     const handleKeyPress = ({ key }) => dispatch({ type: KEY_PRESS, payload: key })
     dispatch({ type: LOADED, payload: maze })
     document.addEventListener("keydown", handleKeyPress)
